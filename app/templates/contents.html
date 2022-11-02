@@ -1,0 +1,17 @@
+{% extends "./base.html" %}
+{% block title %}Contenidos{% endblock %}
+
+{% block main %}
+<h2 class="title title--normal">Nuestro Contenido</h2>
+<div class="container">
+  {% for x in range(7) %}
+  <div class="card">
+    <div class="card__image"></div>
+    <div class="card__body">
+      <h4 class="card__title">Titulo del contenido 1</h4>
+      <p class="card__text">Otro dato del contenido 1 o la fecha de creacion</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
