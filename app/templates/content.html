@@ -1,17 +1,11 @@
-{% extends "./base.html" %}
+{% extends "./layout.html" %}
 {% block title %}Contenido{% endblock %}
 
 {% block main %}
-<h2 class="title title--semibold">Contenido 1</h2>
+<h2 class="title title--semibold"> {{post.title}} </h2>
 <h4 class="subtitle">Algun subtitulo del contenido 1</h4>
 <div class="image"></div>
-<p class="text">Duis imperdiet eget odio sit amet ornare. Vestibulum iaculis dolor non leo fringilla, in pulvinar risus ultrices. Orci
-varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Duis egestas
-congue elit, et ullamcorper risus aliquet in. Donec scelerisque libero ac odio dictum commodo. Ut lobortis elit ac nisi
-consectetur varius. Maecenas commodo ut velit non finibus. Aliquam erat volutpat. Nam eu ipsum diam.
-<br><br>
-Sed vel rhoncus nunc, quis lacinia sapien. Suspendisse scelerisque vehicula lectus, eget semper erat aliquam facilisis.
-Maecenas convallis est dolor, sed hendrerit risus porttitor aliquam. Nunc placerat nunc et lacus semper porttitor.</p>
+<p class="text"> {{post.description}} </p>
 <div class="buttons">
   <button >Contenidos</button>
   <button>Favorito</button>

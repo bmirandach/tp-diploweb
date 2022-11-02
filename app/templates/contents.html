@@ -1,14 +1,14 @@
-{% extends "./base.html" %}
+{% extends "./layout.html" %}
 {% block title %}Contenidos{% endblock %}
 
 {% block main %}
 <h2 class="title title--normal">Nuestro Contenido</h2>
 <div class="container">
-  {% for x in range(7) %}
+  {% for post in list_posts %}
   <div class="card">
     <div class="card__image"></div>
     <div class="card__body">
-      <h4 class="card__title">Titulo del contenido 1</h4>
+      <h4 class="card__title"> {{post.title}} </h4>
       <p class="card__text">Otro dato del contenido 1 o la fecha de creacion</p>
     </div>
   </div>

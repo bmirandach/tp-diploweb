@@ -20,7 +20,10 @@ html {
 body {
   background-color: #ebebeb;
   color: var(--primary);
+  display: flex;
+  flex-direction: column;
   font-family: 'Poppins', sans-serif;
+  min-height: 100vh
 }
 
 button {
@@ -34,6 +37,7 @@ button {
 
 main {
   margin: 0 1rem 0 1rem;
+  flex: 1;
   /* max-width: 1200px; */
 }
 
@@ -123,7 +127,9 @@ main {
 }
 
 .hero { 
-  background-color: #d9d9d9;
+  /* background-color: #d9d9d9; */
+  background-image: linear-gradient(rgba(123, 101, 101, .5), rgba(112, 66, 20, .5)), url('../img/hero.jpg');
+  background-repeat: no-repeat;
   height: 50vh;
   padding: 1.5rem 3rem 0 1rem;
 }
@@ -141,6 +147,7 @@ main {
 }
 
 h1.hero__title {
+  color: #f6f6f6;
   font-size: 2.5rem;
   font-weight: 500;
 }
@@ -239,4 +246,11 @@ h1.hero__title {
 
 .title--semibold {
   font-weight:600;
+}
+
+/* CREATE */
+.form {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 1rem;
 }

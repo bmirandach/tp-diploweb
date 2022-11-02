@@ -1,0 +1,30 @@
+{% extends "./layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Agregar{% endblock %}
+
+{% block main %}
+<h2 class="title title--normal">Agregar Nuevo Contenido</h2>
+<div class="container">
+  {% block page_content %}
+    {{wtf.quick_form(form)}}
+  {% endblock %}
+  <!-- <form action="{{ url_for('create') }}" method="post" role="form" class="form">
+    <fieldset> 
+      {{ form.titlePost.label }}
+      {{ form.titlePost }}-->
+      <!--{{ url_for('create') }} <input class="form__control" id="titlePost" name="titlePost" required type="text" value="{{ request.form['titlePost'] }}">-->
+    <!-- </fieldset> 
+    <fieldset class="form-field">
+      {{ form.contentPost.label }}
+      {{ form.contentPost }}
+    </fieldset>
+
+    {{ form.submit }} -->
+    <!-- <div>
+      <label class="form__label" for="contentPost">Descripción</label>
+      <input class="form__control" id="contentPost" name="contentPost" required type="text" value="{{ request.form['contentPost'] }}">
+    </div>
+    <input class="btn btn-default" id="submit" name="submit" type="submit" value="Subir"> -->
+  </form>
+</div>
+{% endblock %}
