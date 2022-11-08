@@ -32,7 +32,7 @@ button {
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   padding: .5rem 0 .5rem 0;
-  
+  width: 100%; /* para que dentro de <a> ocupe todo el ancho */
 }
 
 main {
@@ -192,6 +192,7 @@ h1.hero__title {
 .card__image {
   background-color: #d9d9d9;
   height: 6rem;
+  overflow: hidden;
 }
 
 @media only screen and (min-width: 1200px) {
