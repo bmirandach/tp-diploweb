@@ -1,0 +1,13 @@
+{% extends "./layout.html" %}
+{% block title %}Lista de usuarios{% endblock %}
+
+{% block main %}
+<h2 class="title title--normal">Usuarios del blog</h2>
+<div class="container">
+  <ul>
+    {% for user in list_users %}
+    <li>{{user.username}} ~ <a href="{{url_for('profile', user_id=user.id)}}">Ver perfil</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

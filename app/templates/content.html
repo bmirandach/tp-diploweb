@@ -3,11 +3,17 @@
 
 {% block main %}
 <h2 class="title title--semibold"> {{post.title}} </h2>
-<h4 class="subtitle">Algun subtitulo del contenido 1</h4>
-<div class="image"></div>
-<p class="text"> {{post.description}} </p>
+<h4 class="subtitle">{{post.subtitle}}</h4>
+<div class="image-container">
+  <img class="image" src="{{post.image_link}}">
+</div>
+<p class="text"> {{post.content}} </p>
 <div class="buttons">
   <a href="{{url_for('contents')}}"><button>Contenidos</button></a>
   <button>Favorito</button>
+</div>
+<div class="buttons">
+  <a href="{{url_for('update', post_id=post.id)}}"><button>Editar</button></a>
+  <a href="{{url_for('delete', post_id=post.id)}}"><button>Borrar</button></a>
 </div>
 {% endblock %}

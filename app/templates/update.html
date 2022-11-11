@@ -1,0 +1,13 @@
+{% extends "./layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Modificar{% endblock %}
+
+{% block main %}
+<h2 class="title title--normal">Modificar Contenido</h2>
+<div class="container">
+  {% block page_content %}
+  <p>Los campos requeridos se marcan con *</p>
+  {{wtf.quick_form(form)}}
+  {% endblock %}
+</div>
+{% endblock %}

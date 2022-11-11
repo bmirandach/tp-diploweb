@@ -12,8 +12,17 @@
   <a class="text-container__link" href="{{ url_for('contents') }}">Ver más</a>
 </div>
 <div class="container">
-  <div class="content"></div>
-  <div class="content"></div>
-  <div class="content"></div>
+  {% for post in list_posts[:3]: %}
+  <div class="card">
+    <div class="card__image">
+      <img src="{{post.image_link}}">
+    </div>
+    <div class="card__body">
+      <h4 class="card__title"> {{post.title}} </h4>
+      <p class="card__text">Publicado el {{post.timestamp}}</p>
+      <a title="Leer mas" class="card__text" href="{{url_for('content', post_id=post.id)}}">Leer mas</a>
+    </div>
+  </div>
+  {% endfor %}
 </div>
 {% endblock %}
