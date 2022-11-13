@@ -8,12 +8,26 @@
   <img class="image" src="{{post.image_link}}">
 </div>
 <p class="text"> {{post.content}} </p>
-<div class="buttons">
-  <a href="{{url_for('contents')}}"><button>Contenidos</button></a>
-  <button>Favorito</button>
-</div>
-<div class="buttons">
-  <a href="{{url_for('update', post_id=post.id)}}"><button>Editar</button></a>
-  <a href="{{url_for('delete', post_id=post.id)}}"><button>Borrar</button></a>
+<div class="buttons-container">
+  <div class="buttons">
+    <a href="{{url_for('contents')}}"><button>Posts</button></a>
+    {% if not current_user.is_favorite(post) %}
+    <form action="{{ url_for('like', post_id=post.id) }}" method="post" class="form__buttons">
+      {{ form.hidden_tag() }}
+      {{ form.submit(value='Favorito') }}
+    </form>
+    {% else %}
+    <form action="{{ url_for('dislike', post_id=post.id) }}" method="post" class="form__buttons">
+      {{ form.hidden_tag() }}
+      {{ form.submit(value='Sacar Favorito') }}
+    </form>
+    {% endif %}
+  </div>
+  {% if current_user.admin %}
+  <div class="buttons">
+    <a href="{{url_for('update', post_id=post.id)}}"><button>Editar</button></a>
+    <a href="{{url_for('delete', post_id=post.id)}}"><button>Borrar</button></a>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}

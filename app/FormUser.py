@@ -7,8 +7,7 @@ class UserCreate(FlaskForm):
     username = StringField("Nombre de usuario", validators=[DataRequired()])
     password = PasswordField('Contraseña', validators=[DataRequired()])
     email = StringField("Email", validators=[DataRequired(), Email()])
-    submit = SubmitField("Crear")
-
+    submit = SubmitField("Crear usuario")
 
 class LoginForm(FlaskForm):
     username = StringField('Nombre de usuario', validators=[DataRequired()])

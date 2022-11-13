@@ -29,10 +29,15 @@ body {
 button {
   border: 1px solid #000;
   border-radius: 5px;
+  cursor: pointer;
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   padding: .5rem 0 .5rem 0;
   width: 100%; /* para que dentro de <a> ocupe todo el ancho */
+}
+
+button:hover {
+  background-color: #b7b7b7;
 }
 
 main {
@@ -97,13 +102,14 @@ main {
   padding: 1rem 0 1rem 0;
   display: grid;
   grid-template-columns: 1fr;
-  grid-row-gap: 1rem;
+  row-gap: 1rem;
 }
 
 @media only screen and (min-width: 769px) {
   .container {
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 1.5rem;
+    row-gap: 1.5rem;
   }
 }
 
@@ -215,19 +221,34 @@ h1.hero__title {
 }
 
 /* CONTENTS Y CONTENT */
+.buttons-container {
+  padding-bottom: 2.5rem;
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 1rem;
+}
+
+@media only screen and (min-width: 769px) {
+  .buttons-container{
+    grid-column-gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 920px;
+  }
+}
+
 .buttons {
   display: grid;
   grid-column-gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
+  flex: 1;
   max-width: 460px;
-  padding-bottom: 2.5rem;
-  padding-top: 2rem;
 }
 
 .image-container {
   background-color: #d9d9d9;
   border-radius: 5px;
-  height: 7rem;
+  height: 8rem;
   margin: .5rem 0 1rem 0;
   display: flex; /*para centrar la imagen*/
   justify-content: center;
@@ -268,10 +289,40 @@ h1.hero__title {
   row-gap: 1rem;
 }
 
+.form__buttons input {
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  padding: .5rem 0 .5rem 0;
+  width: 100%;
+    /* para que dentro de <a> ocupe todo el ancho */
+}
+
+.form_container {
+  margin: auto;
+  max-width: 700px;
+  display: grid;
+  row-gap: 1rem;
+}
+
+.form__buttons input:hover {
+  background-color: #b7b7b7;
+}
+
 /* FORMS */
-.data {
+.form__data {
   display: flex;
   flex-direction: column;
 }
 
+.form__data input {
+  padding: 8px 12px;
+}
+
+.form__data textarea {
+  height: 10rem;
+  resize: none;
+}
 

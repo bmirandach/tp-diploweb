@@ -3,7 +3,8 @@
 
 {% block main %}
 <h2 class="title title--semibold">Bienvenido {{user.username}}</h2>
-<h4 class="subtitle">Tus favoritos</h4>
+<h4 class="subtitle">Tu mail es {{user.email}}</h4>
+<h3 class="subtitle title">Tus favoritos</h3>
 
 <div class="container">
   {% for post in list_posts %}
