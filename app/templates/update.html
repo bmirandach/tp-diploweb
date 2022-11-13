@@ -1,0 +1,47 @@
+{% extends "./layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Modificar{% endblock %}
+
+{% block main %}
+<div class="form_container">
+  <h2 class="title title--normal">Modificar post</h2>
+  <form action="" method="post" novalidate class="form">
+    {{ form.hidden_tag() }}
+    <div class="form__data">
+      {{ form.title.label }}
+      {{ form.title }}
+      {% for error in form.title.errors %}
+      <span class="message--error">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form__data">
+      {{ form.subtitle.label }}
+      {{ form.subtitle }}
+      {% for error in form.subtitle.errors %}
+      <span class="message--error">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form__data">
+      {{ form.content.label }}
+      {{ form.content }}
+      {% for error in form.content.errors %}
+      <span class="message--error">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form__data">
+      {{ form.image.label }}
+      {{ form.image }}
+      {% for error in form.image.errors %}
+      <span class="message--error">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form__buttons">
+      {{ form.submit()}}
+    </div>
+  </form>
+    <!-- {% block page_content %}
+    <p>Los campos requeridos se marcan con *</p>
+    {{wtf.quick_form(form)}}
+    {% endblock %} -->
+</div>
+{% endblock %}

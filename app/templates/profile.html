@@ -2,18 +2,22 @@
 {% block title %}Perfil{% endblock %}
 
 {% block main %}
-<h2 class="title title--semibold">Bienvenido </h2>
-<h4 class="subtitle">Favoritos</h4>
+<h2 class="title title--semibold">Bienvenido {{user.username}}</h2>
+<h4 class="subtitle">Tu mail es {{user.email}}</h4>
+<h3 class="subtitle title">Tus favoritos</h3>
 
-{% for post in list_posts %}
-<div class="card">
-  <div class="card__image">
-    <img src="https://cataas.com/cat">
+<div class="container">
+  {% for post in list_posts %}
+  <div class="card">
+    <div class="card__image">
+      <img src="{{post.image_link}}">
+    </div>
+    <div class="card__body">
+      <h4 class="card__title"> {{post.title}} </h4>
+      <p class="card__text">Publicado el {{post.timestamp}}</p>
+      <a title="Leer mas" class="card__text" href="{{url_for('content', post_id=post.id)}}">Leer mas</a>
+    </div>
   </div>
-  <div class="card__body">
-    <h4 class="card__title"> {{post.title}} </h4>
-    <p class="card__text">Otro dato del contenido 1 o la fecha de creacion</p>
-  </div>
+  {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}

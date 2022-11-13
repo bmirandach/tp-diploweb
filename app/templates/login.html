@@ -1,0 +1,30 @@
+{% extends "./layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block main %}
+<div class="form_container">
+  <h2 class="title title--normal">Inicia sesión</h2>
+  <form action="" method="post" novalidate class="form">
+    {{ form.hidden_tag() }}
+    <div class="form__data">
+      {{ form.username.label }}
+      {{ form.username(size=32) }}
+      {% for error in form.username.errors %}
+      <span class="message--error">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form__data">
+      {{ form.password.label }}
+      {{ form.password(size=32) }}
+      {% for error in form.password.errors %}
+      <span class="message--error">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form__buttons">
+      {{ form.submit()}}
+    </div>
+  </form>
+</div>
+
+{% endblock %}
