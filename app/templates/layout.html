@@ -9,13 +9,14 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/alerts.css') }}">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" href="../static/img/icon.png">
 </head>
 
 <body>
   <header>
     <nav class="navbar">
-      <a class="navbar__link" href="{{url_for('index')}}">Nombre</a>
-      <ul class="navbar__list">
+      <a href="{{url_for('index')}}"><img class="navbar__link" href="{{url_for('index')}}" src="../static/img/logo.png" alt=""></a>
+<!--      <ul class="navbar__list">
         {% if current_user.is_anonymous %}
         <li><a class="navbar__link" href="{{ url_for('create_user') }}">Crear cuenta</a></li>
         <li><a class="navbar__link" href="{{ url_for('login') }}">Ingresar</a></li>
@@ -28,12 +29,51 @@
         <li><a class="navbar__link" href="{{ url_for('profile', user_id=current_user.id) }}">Perfil</a></li>
         <li><a class="navbar__link" href="{{ url_for('logout') }}">Salir</a></li>
         {% endif %}
-        <li><a class="navbar__link" href="{{ url_for('contact') }}">Contacto</a></li>
+        <li><a class="navbar__link" href="{{ url_for('contact') }}">Contacto</a></li>-->
+
+
+        <ul class="navbar__list">
+
+          {% if current_user.admin %}
+          <li><a class="navbar__link" href="{{ url_for('create') }}">Crear</a></li>
+            <li><a class="navbar__link" href="{{ url_for('profile', user_id=current_user.id) }}">Perfil</a></li>
+            {% endif %}
+          <li><a class="navbar__link" href="{{ url_for('contents') }}">Posts</a></li>
+          <li><a class="navbar__link" href="{{ url_for('contact') }}">Contacto</a></li>
+        <li onclick="toggleMenu()"><a class="navbar__link" href="#">Menu</a></li>
       </ul>
     </nav>
     {% block header %}
     {% endblock %}
   </header>
+  <div class="sub-menu-wrap" id="subMenu">
+    <div class="sub-menu">
+        <div class="user-info">
+        </div>
+        <hr>
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('create_user') }}" class="sub-menu-link">
+            <p>Crear Cuenta</p>
+            <span>></span>
+        </a>
+        <a href="{{ url_for('login') }}" class="sub-menu-link">
+            <p>Ingresar</p>
+            <span>></span>
+        </a>
+        {% else %}
+        {% if current_user.admin %}
+      <a href="{{ url_for('users') }}" class="sub-menu-link">
+        <p>Usuarios</p>
+        <span>></span>
+      </a>
+      {% endif %}
+      <a href="{{ url_for('logout') }}" class="sub-menu-link">
+          <p>Cerrar Sesion</p>
+          <span>></span>
+          </a>
+          {% endif %}
+    </div>
+  </div>
   <main>
     {% for message in get_flashed_messages() %}
     <div id="alerts" class=" alert-info alert open">
@@ -45,11 +85,11 @@
     {% endblock %}
   </main>
   <footer class="footer">
-    <p>Nombre</p>
+    <p>NewPlant</p>
     <address>
       <p>Buenos Aires, Argentina</p>
     </address>
-    <p>Copyright &copy; 2022 Nombre, todos los derechos reservados.</p>
+    <p>Copyright &copy; 2022 NewPlant, todos los derechos reservados.</p>
   </footer>
   <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
 </body>
