@@ -1,3 +1,10 @@
+let subMenu = document.getElementById("subMenu");
+
+function toggleMenu()
+{
+    subMenu.classList.toggle("open-menu");
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
   //código a ejecutar cuando el DOM está listo para recibir acciones
   var alertElem
