@@ -6,7 +6,7 @@ from flask_bootstrap import Bootstrap
 from datetime import datetime #para el post
 from werkzeug.security import generate_password_hash, check_password_hash #para contraseñas
 from flask_login import LoginManager
-from flask_login import UserMixin
+from flask_login import UserMixin #incluye implementaciones genericas
 from flask_login import current_user, login_user, logout_user, login_required
 
 from flask_sqlalchemy import SQLAlchemy
@@ -87,12 +87,12 @@ def load_user(id):
 def create():
     form = PostCreate()
     if request.method == 'POST':
-        if create.validate_on_submit():
+        if form.validate_on_submit():
             post = Post(title=form.title.data, subtitle=form.subtitle.data,
                         content=form.content.data, image_link=form.image.data)
             db.session.add(post)
             db.session.commit()
-            flash(f'El post {post.id} se creo con exito')
+            flash(f'El post se creó con éxito') #{post.title} 
             return redirect(url_for('content', post_id=post.id))
         else:
             flash('Error. Revise los datos del formulario.')
@@ -100,45 +100,46 @@ def create():
 
 @app.route('/modificar/<post_id>', methods=['GET','POST'])
 def update(post_id):
-    update = PostUpdate()
+    form = PostUpdate()
     post = Post.query.get_or_404(post_id)
     if request.method == 'POST':
-        if update.validate_on_submit():
-            post.title = update.title.data
-            post.subtitle = update.subtitle.data
-            post.content = update.content.data
-            post.image_link = update.image.data
+        if form.validate_on_submit():
+            post.title = form.title.data
+            post.subtitle = form.subtitle.data
+            post.content = form.content.data
+            post.image_link = form.image.data
             db.session.add(post)
             db.session.commit()
-            flash(f'El Post {post.id} se modifico con exito')
+            flash(f'El post se modificó con éxito')  # {post.id}
             return redirect(url_for('content', post_id=post_id))
     #entra al formulario, GET
-    return render_template('update.html', form=update, post=post)
+    return render_template('update.html', form=form, post=post)
 
 @app.route('/eliminar/<post_id>')
 def delete(post_id):
     post = Post.query.get_or_404(post_id)
     db.session.delete(post)
     db.session.commit()
-    flash(f'El Post {post_id} se elimino con exito')
+    flash(f'El post se eliminó con éxito')  # {post_id}
     return redirect(url_for('contents'))
 
 @app.route('/crear-usuario', methods=['GET', 'POST'])
 def create_user():
-    create = UserCreate()
+    form = UserCreate()
     if request.method == 'POST':
         if create.validate_on_submit():
-            newUser = User(username=create.username.data, password=create.password.data, email=create.email.data)
-            newUser.set_password(create.password.data)
-            db.session.add(newUser)
+            user = User(username=form.username.data,
+                           password=form.password.data, email=form.email.data)
+            user.set_password(form.password.data)
+            db.session.add(user)
             db.session.commit()
-            flash(f'Su usuario {newUser.username} se creó con éxito')
+            flash(f'El usuario {user.username} se creó con éxito')
             #no lo lleva a su perfil, lo lleva al login para que inicie su sesion
-            #return redirect(url_for('profile', user_id=newUser.id))
+            #return redirect(url_for('profile', user_id=user.id))
             return redirect(url_for('login'))
         else:
             flash('Error. Revise los datos del formulario.')
-    return render_template('signin.html', form=create)
+    return render_template('signin.html', form=form)
 
 @app.route('/iniciar-sesion', methods=['GET', 'POST'])
 def login():
@@ -174,6 +175,9 @@ def index():
 def contact():
     return render_template('contact.html')
 
+@app.route('/contactanos')
+def contact_us():
+    return render_template('contactDevs.html')
 
 @app.route('/posts')
 def contents():

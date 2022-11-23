@@ -1,9 +1,3 @@
-.alert-message {
-  line-height: 20px;
-  font-size: 15px;
-  padding-bottom: 12px;
-}
-
 #alerts {
 
   width: 400px;
@@ -33,6 +27,12 @@
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
+.alert__message {
+  line-height: 20px;
+  font-size: 1rem;
+  padding-bottom: 12px;
+}
+
 .open {
   right: 0;
   opacity: 1;
@@ -41,34 +41,79 @@
   transition: line-height 200ms, padding 200ms, right 350ms 200ms, opacity 350ms 200ms;
 }
 
-.alert-success {
+.alert--success {
   color: #fff;
   border-color: #539753;
   background-color: #8fbf2f;
 }
 
-.alert-error {
+.alert--error {
   color: #fff;
   border-color: #dc4a4d;
   background-color: #f25c5d;
 }
 
-.alert-trash {
+.alert--trash {
   color: #fff;
   border-color: #dc4a4d;
   background-color: #f25c5d;
 }
 
-.alert-info {
+.alert--info {
   color: #fff;
   border-color: #666666;
   background-color: #353535;
 }
 
-.alert-warning {
+.alert--warning {
   color: #fff;
   border-color: #dd6137;
   background-color: #f7931d;
 }
 
 .message--error { color:#f25c5d}
+
+/* TOGGLE */
+.toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.toggle__checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+/* mueve la bola*/
+.toggle__checkbox:checked+.toggle__label .toggle__ball {
+  transform: translateX(24px);
+}
+
+.toggle__label {
+  width: 50px;
+  height: 26px;
+  background-color: #111;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.toggle__ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}

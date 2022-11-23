@@ -101,6 +101,7 @@ main {
   list-style-type: none;
 }
 
+
 /* ESTO ES PARA INDEX*/
 .container {
   width: 100%;
@@ -140,6 +141,7 @@ main {
   /* background-color: #d9d9d9; */
   background-image: linear-gradient(10deg, rgba(178, 233, 116, 0.5), rgba(108, 160, 84, 0.5)), url('../img/hero.jpg');
   background-repeat: no-repeat;
+  background-size: cover;
   height: 50vh;
   padding: 1.5rem 3rem 0 1rem;
 }
@@ -245,55 +247,6 @@ h4.hero__title {
 
 
 /* CONTENTS Y CONTENT */
-.buttons-container {
-  padding-bottom: 2.5rem;
-  padding-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  row-gap: 1rem;
-}
-
-@media only screen and (min-width: 769px) {
-  .buttons-container{
-    grid-column-gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 920px;
-  }
-}
-
-.buttons {
-  display: grid;
-  grid-column-gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
-  flex: 1;
-  max-width: 460px;
-}
-
-.image-container {
-  background-color: #d9d9d9;
-  border-radius: 5px;
-  height: 8rem;
-  margin: .5rem 0 1rem 0;
-  display: flex; /*para centrar la imagen*/
-  justify-content: center;
-  align-items: center;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} 
-
-.subtitle {
-  font-weight: 400;
-  padding-top: .2rem;
-}
-
-.text {
-  line-height: 1.8rem;
-}
-
 .title {
   padding-top: 1rem;
 }

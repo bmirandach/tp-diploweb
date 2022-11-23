@@ -1,33 +1,40 @@
 {% extends "./layout.html" %}
-{% block title %}Contenido{% endblock %}
-
+{% block title %}{{post.title}}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+{% endblock %}
 {% block main %}
-<h2 class="title title--semibold"> {{post.title}} </h2>
-<h4 class="subtitle">{{post.subtitle}}</h4>
-<div class="image-container">
-  <img class="image" src="{{post.image_link}}">
-</div>
-<p class="text"> {{post.content}} </p>
-<div class="buttons-container">
-  <div class="buttons">
-    <a href="{{url_for('contents')}}"><button>Posts</button></a>
-    {% if not current_user.is_favorite(post) %}
-    <form action="{{ url_for('like', post_id=post.id) }}" method="post" class="form__buttons">
-      {{ form.hidden_tag() }}
-      {{ form.submit(value='Favorito') }}
-    </form>
-    {% else %}
-    <form action="{{ url_for('dislike', post_id=post.id) }}" method="post" class="form__buttons">
-      {{ form.hidden_tag() }}
-      {{ form.submit(value='Sacar Favorito') }}
-    </form>
-    {% endif %}
+
+<div class="post">
+  <img class="post__image" src="{{post.image_link}}">
+  <div>
+    <h2 class="post__title"> {{post.title}} </h2>
+    <h4 class="post_subtitle">{{post.subtitle}}</h4>
+    <p class="post__text"> {{post.content}} </p>
+    <div class="post__buttons">
+      <div class="buttons">
+        <a href="{{url_for('contents')}}"><button>Posts</button></a>
+        {% if not current_user.is_favorite(post) %}
+        <form action="{{ url_for('like', post_id=post.id) }}" method="post" class="form__buttons">
+          {{ form.hidden_tag() }}
+          {{ form.submit(value='Favorito') }}
+        </form>
+        {% else %}
+        <form action="{{ url_for('dislike', post_id=post.id) }}" method="post" class="form__buttons">
+          {{ form.hidden_tag() }}
+          {{ form.submit(value='Sacar favorito') }}
+        </form>
+        {% endif %}
+      </div>
+      {% if current_user.admin %}
+      <div class="buttons">
+        <a href="{{url_for('update', post_id=post.id)}}"><button>Editar</button></a>
+        <a href="{{url_for('delete', post_id=post.id)}}"><button>Borrar</button></a>
+      </div>
+      {% endif %}
+    </div>
   </div>
-  {% if current_user.admin %}
-  <div class="buttons">
-    <a href="{{url_for('update', post_id=post.id)}}"><button>Editar</button></a>
-    <a href="{{url_for('delete', post_id=post.id)}}"><button>Borrar</button></a>
-  </div>
-  {% endif %}
+
 </div>
+
 {% endblock %}

@@ -9,8 +9,8 @@
 {% endblock %}
 {% block main %}
 <div class="text-container">
-  <h2>Contenido</h2>
-  <a class="text-container__link" href="{{ url_for('contents') }}">Ver más</a>
+  <h2>Posts</h2>
+  <a class="text__link" href="{{ url_for('contents') }}">Ver más ></a>
 </div>
 <div class="container">
   {% for post in list_posts[:3]: %}
