@@ -1,0 +1,25 @@
+:root {
+  --primary-dark: #ebebeb;
+}
+
+body.dark {
+  background-color: #121212;
+  color: rgba(235, 235, 235, .87);
+}
+
+.dark .card {
+  background-color: #1d1d1d;
+}
+
+.dark .card__text, .dark .subtitle {
+  color: var(--primary-dark);
+  opacity: 60%;
+}
+
+.dark .text__link {
+  color: var(--primary-dark);
+}
+
+.fa-sun {
+  color: rgb(240, 240, 123);
+}
