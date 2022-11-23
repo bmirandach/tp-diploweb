@@ -5,26 +5,27 @@
 }
 
 #alerts {
+
   width: 400px;
   top: 12px;
-  right: 50px;
-  position: fixed;
-  z-index: 9999;
+  right: 25px;
   list-style: none;
 }
 
 .alert {
-  width: 100%;
-  margin-bottom: 8px;
-  display: block;
+  padding: 20px 40px;
+  min-width: 420px;
   position: relative;
-  border-left: 4px solid;
-  right: -50px;
-  opacity: 0;
+  right: 0px;
+  top: 10px;
+  border-radius: 4px;
+  border-left: 8px solid #ffa502;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 8px;
   line-height: 1;
-  padding: 0;
   transition: right 400ms, opacity 400ms, line-height 300ms 100ms, padding 300ms 100ms;
-  display: table;
+
 }
 
 .alert:hover {
@@ -60,8 +61,8 @@
 
 .alert-info {
   color: #fff;
-  border-color: #076d91;
-  background-color: #3397db;
+  border-color: #666666;
+  background-color: #353535;
 }
 
 .alert-warning {
