@@ -1,6 +1,3 @@
-La foto del hero es de [Annie Spratt](https://unsplash.com/@anniespratt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) en [Unsplash](https://unsplash.com/es/s/fotos/plantas-interiores?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
-  
-
 #En la terminal
 
 python -m venv venv\
