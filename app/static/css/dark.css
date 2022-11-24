@@ -1,14 +1,24 @@
 :root {
   --primary-dark: #ebebeb;
+  --primary-color: #b8f89e;
+  --primary-hover: #b7b7b7;
 }
 
 body.dark {
-  background-color: #121212;
+  background: #121212;
   color: rgba(235, 235, 235, .87);
 }
 
+.dark button {
+  background-color: var(--primary-color);
+}
+
+.dark button:hover {
+  background-color: var(--primary-hover);
+}
+
 .dark .card {
-  background-color: #1d1d1d;
+  background: #1d1d1d;
 }
 
 .dark .card__text, .dark .subtitle {
@@ -16,10 +26,31 @@ body.dark {
   opacity: 60%;
 }
 
+.dark .card__link {
+  background-color: var(--primary-color);
+}
+
+.dark .card__link:hover {
+  background-color: #5e5e5e;
+  color: #fff;
+}
+
+.dark .form__buttons input{
+  background-color: var(--primary-color);
+}
+
+.dark .form__buttons input:hover {
+  background-color: var(--primary-hover);
+}
+
 .dark .text__link {
   color: var(--primary-dark);
 }
 
+.fa-moon {
+  color: #fff;
+}
+
 .fa-sun {
-  color: rgb(240, 240, 123);
+  color: #f0f07b;
 }

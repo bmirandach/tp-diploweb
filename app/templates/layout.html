@@ -5,20 +5,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}{% endblock %} - Nombre</title>
+  <title>{% block title %}{% endblock %} - NewPlant</title>
   {% block head %}
   {% endblock %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/alerts.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/dark.css') }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32x32.png') }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16x16.png') }}">
-  <link rel="manifest" href="/app/static/img/site.webmanifest">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="icon" href="../static/img/icon.png">
+  <link rel="icon" href="{{ url_for('static', filename='img/icon.png') }}">
 </head>
 
 <body>

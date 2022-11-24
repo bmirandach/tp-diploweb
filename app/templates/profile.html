@@ -15,7 +15,7 @@
     <div class="card__body">
       <h4 class="card__title"> {{post.title}} </h4>
       <p class="card__text">Publicado el {{post.timestamp}}</p>
-      <a title="Leer mas" class="card__text" href="{{url_for('content', post_id=post.id)}}">Leer mas</a>
+      <a title="Leer mas" class="card__link" href="{{url_for('content', post_id=post.id)}}">Leer mas</a>
     </div>
   </div>
   {% endfor %}
