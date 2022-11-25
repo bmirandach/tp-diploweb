@@ -8,11 +8,12 @@ from werkzeug.security import generate_password_hash, check_password_hash #para 
 from flask_login import LoginManager
 from flask_login import UserMixin #incluye implementaciones genericas
 from flask_login import current_user, login_user, logout_user, login_required
+from flask_mail import Mail, Message
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-from FormUser import UserCreate, LoginForm
+from FormUser import UserCreate, LoginForm, ContactForm
 from FormPost import PostCreate, PostUpdate, FavoriteForm
 
 projectdir = os.path.abspath(os.path.join(os.path.dirname(__file__),"..")) #donde esta app 
@@ -21,12 +22,20 @@ db_path = os.path.join(projectdir, 'blog.db')
 app=Flask(__name__) #inicializar la app
 app.config['SECRET_KEY'] = 'xxDDF878945f7f8t9gWavp5p'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_path
+app.config['MAIL_SERVER'] = 'smtp-mail.outlook.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL']=False
+app.config['MAIL_USERNAME'] = 'bm_tests@outlook.com'
+app.config['MAIL_PASSWORD'] = 'hola1234'
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 bootstrap = Bootstrap(app)
 login = LoginManager(app)
 login.login_view = 'login' #indica que la funcion login es la que se encarga de los inicios de sesion
 login.login_message = 'Inicia sesión para ver esta página'
+mail = Mail(app)
 
 Favorites = db.Table(
     'favorites',
@@ -171,9 +180,24 @@ def index():
     all_contents = Post.query.all() #si uso first como traigo los otros 2?
     return render_template('index.html', list_posts=all_contents)
 
-@app.route('/contacto')
+
+@app.route('/contacto', methods=['GET', 'POST'])
 def contact():
-    return render_template('contact.html')
+    form = ContactForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            name= form.name.data
+            email = form.email.data
+            message = form.message.data
+            #se arma el mensaje para enviar y se agregan emisor y receptor
+            msg = Message(subject=f'Mensaje de {name} en NewPlant', body=f'Enviado por: {name}\nEmail: {email}\n\n{message}', sender=app.config['MAIL_USERNAME'], recipients=['brengabriela@gmail.com'])
+            mail.send(msg)
+            #limpia el formulario y se pasa sin datos
+            form = ContactForm(formdata=None)
+            return render_template('contact.html', success=True, form=form)
+        else:
+            flash('Error. Revise los datos del formulario.')
+    return render_template('contact.html', form=form)
 
 @app.route('/contactanos')
 def contact_us():
