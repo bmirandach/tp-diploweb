@@ -51,7 +51,11 @@
             <li><a class="navbar__link" href="{{ url_for('profile', user_id=current_user.id) }}">Perfil</a></li>
             {% endif %}
           <li><a class="navbar__link" href="{{ url_for('contents') }}">Posts</a></li>
+          {% if current_user.admin %}
+          <li><a class="navbar__link" href="{{ url_for('contact_us') }}">Contacto</a></li>
+          {% else %}
           <li><a class="navbar__link" href="{{ url_for('contact') }}">Contacto</a></li>
+          {% endif %}
         <li onclick="toggleMenu()"><a class="navbar__link" href="#">Menu</a></li>
       </ul>
     </nav>
