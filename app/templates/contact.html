@@ -1,49 +1,17 @@
 {% extends "./layout.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
 {% block title %}Contacto{% endblock %}
 
 {% block main %}
-{% if success %}
-<div id="alerts" class="alert alert--success open">
-  <p class="alert__message">Tu mensaje fue enviado con éxito</p>
-</div>
-{% endif %}
-<div class="form_container">
-  <h2 class="title title--normal">Dejanos tu mensaje</h2>
-  <form action="" method="post" novalidate class="form">
-    {{ form.hidden_tag() }}
-    <div class="form__data">
-      {{ form.name.label }}
-      {{ form.name(size=32) }}
-      {% for error in form.name.errors %}
-      <span class="message--error">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="form__data">
-      {{ form.email.label }}
-      {{ form.email(size=32) }}
-      {% for error in form.email.errors %}
-      <span class="message--error">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="form__data">
-      {{ form.message.label }}
-      {{ form.message(size=500) }}
-      {% for error in form.message.errors %}
-      <span class="message--error">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="form__buttons">
-      {{ form.submit()}}
-    </div>
-  </form>
- 
-  <h2 class="title title--normal"> O comunicate con nosotros por los siguientes medios: </h2>
-  <p class="text">Correo: newplant@gmail.com</p>
 
-  <p class="text">Teléfono: +54 11 9 1234-5678</p>
-
-  <p class="text">Direccion: Bella Pagina God 2022</p>
-</div>
-
+<h2 class="title title--normal"> Contactos </h2>
+<p class="text">Para contactarnos puedes hacerlo mendiante los siguientes modos:</p>
+<p class="text">Correo: newplant@gmail.com</p>
+<hr>
+<p class="text">Telefono: +54 11 9 1234-5678</p>
+<hr>
+<p class="text">Direccion: Bella Pagina God 2022</p>
+<hr>
+<h2 class="title title--normal">Los desarrolladores</h2>
+<p class="text"> Brenda Miranda </p>
+<p class="text"> Mario Sandoval</p>
 {% endblock %}

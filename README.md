@@ -1,7 +1,3 @@
-#Para que funcione el formulario en Contacto\
-En app.py asignar un valor para app.config['MAIL_USERNAME'] y app.config['MAIL_PASSWORD'], esta es la cuenta desde la que se envían los mensajes. La contraseña debe ser con la que se inicia sesión. Luego pasarle un mail a recipients (actualmente línea 193 en app.py), esta es la cuenta que recibe el mensaje.
-
-\
 #En la terminal
 
 python -m venv venv\
@@ -14,7 +10,6 @@ pip install flask-sqlalchemy\
 pip install flask-migrate\
 pip install email_validator\
 pip install flask-login\
-pip install flask-mail\
 py ./app/app.py
 
 cd app\
