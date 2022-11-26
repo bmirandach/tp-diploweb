@@ -136,7 +136,7 @@ def delete(post_id):
 def create_user():
     form = UserCreate()
     if request.method == 'POST':
-        if create.validate_on_submit():
+        if form.validate_on_submit():
             user = User(username=form.username.data,
                            password=form.password.data, email=form.email.data)
             user.set_password(form.password.data)
