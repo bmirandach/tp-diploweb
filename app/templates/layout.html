@@ -45,13 +45,12 @@
 
 
         <ul class="navbar__list">
-
+          <li><a class="navbar__link" href="{{ url_for('contents') }}">Posts</a></li>
+          {% if not current_user.is_anonymous %}
+          <li><a class="navbar__link" href="{{ url_for('profile', user_id=current_user.id) }}">Perfil</a></li>
+          {% endif %}
           {% if current_user.admin %}
           <li><a class="navbar__link" href="{{ url_for('create') }}">Crear</a></li>
-            <li><a class="navbar__link" href="{{ url_for('profile', user_id=current_user.id) }}">Perfil</a></li>
-            {% endif %}
-          <li><a class="navbar__link" href="{{ url_for('contents') }}">Posts</a></li>
-          {% if current_user.admin %}
           <li><a class="navbar__link" href="{{ url_for('contact_us') }}">Contacto</a></li>
           {% else %}
           <li><a class="navbar__link" href="{{ url_for('contact') }}">Contacto</a></li>

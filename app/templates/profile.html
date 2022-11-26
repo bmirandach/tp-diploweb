@@ -2,10 +2,15 @@
 {% block title %}Perfil{% endblock %}
 
 {% block main %}
+{% if current_user.id == user.id %}
 <h2 class="title title--semibold">Bienvenido {{user.username}}</h2>
 <h4 class="subtitle">Tu mail es {{user.email}}</h4>
 <h3 class="subtitle title">Tus favoritos</h3>
-
+{% else %}
+<h2 class="title title--semibold">Perfil de {{user.username}}</h2>
+<h4 class="subtitle">Su mail es {{user.email}}</h4>
+<h3 class="subtitle title">Sus favoritos</h3>
+{% endif %}
 <div class="container">
   {% for post in list_posts %}
   <div class="card">
@@ -15,7 +20,7 @@
     <div class="card__body">
       <h4 class="card__title"> {{post.title}} </h4>
       <p class="card__text">Publicado el {{post.timestamp}}</p>
-      <a title="Leer mas" class="card__link" href="{{url_for('content', post_id=post.id)}}">Leer mas</a>
+      <a title="Leer mas" class="card__link" href="{{url_for('content', post_id=post.id)}}">Leer más</a>
     </div>
   </div>
   {% endfor %}
