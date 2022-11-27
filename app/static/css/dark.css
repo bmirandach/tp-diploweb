@@ -43,6 +43,23 @@ body.dark {
   background-color: var(--primary-hover);
 }
 
+.dark .navbar {
+  /* #132e09d2 */
+  background: linear-gradient(10deg, #070e05f0, #132e09d2), url(../img/hero.jpg);
+}
+
+.dark .navbar__link {
+  color: var(--primary-dark);
+}
+
+.dark .post__image {
+  filter: brightness(60%);
+}
+
+.dark .post__image:hover {
+  filter: brightness(90%);
+}
+
 .dark .text__link {
   color: var(--primary-dark);
 }

@@ -13,6 +13,15 @@
   --bezier: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+::-moz-selection {
+  /* Firefox */
+  background: #b8f89e;
+}
+
+::selection {
+  background: #b8f89e;
+}
+
 html {
   scroll-behavior: smooth;
   background-color: rgb(28, 63, 8);
@@ -367,6 +376,7 @@ h4.hero__title {
 
 .sub-menu-wrap.open-menu {
   max-height: 400px;
+  z-index: 1;
 }
 .sub-menu { 
   background: #161616;
