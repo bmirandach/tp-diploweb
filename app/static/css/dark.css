@@ -52,6 +52,10 @@ body.dark {
   color: var(--primary-dark);
 }
 
+.dark .navbar__link:hover {
+  border-bottom: 3px solid #96f571d2;
+}
+
 .dark .post__image {
   filter: brightness(60%);
 }

@@ -16,10 +16,12 @@
 ::-moz-selection {
   /* Firefox */
   background: #b8f89e;
+  color: #1d1d1d;
 }
 
 ::selection {
   background: #b8f89e;
+  color: #1d1d1d;
 }
 
 html {
@@ -121,6 +123,9 @@ main {
   color: #000;
 }
 
+.navbar__link:hover {
+  border-bottom: 3px solid #80a06f; 
+}
 
 .navbar__list {
   display: flex;
