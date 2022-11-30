@@ -43,8 +43,13 @@ body.dark {
   background-color: var(--primary-hover);
 }
 
+.dark .hamburger,
+.dark .hamburger::before,
+.dark .hamburger::after {
+  background: rgba(235, 235, 235, .87);
+}
+
 .dark .navbar {
-  /* #132e09d2 */
   background: linear-gradient(10deg, #070e05f0, #132e09d2), url(../img/hero.jpg);
 }
 
@@ -54,6 +59,16 @@ body.dark {
 
 .dark .navbar__link:hover {
   border-bottom: 3px solid #96f571d2;
+}
+
+.dark .navbar__menu {
+  background: #212121;
+}
+
+@media only screen and (min-width: 992px) {
+  .dark .navbar__menu {
+    background: transparent;
+  }
 }
 
 .dark .post__image {
