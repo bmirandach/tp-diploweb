@@ -4,9 +4,12 @@ from wtforms.validators import *
 import email_validator
 
 class UserCreate(FlaskForm):
+    name = StringField("Nombre", validators=[DataRequired(), Length(min= 4)])
+    surname = StringField("Apellido", validators=[DataRequired(), Length(min= 4)])
     username = StringField("Nombre de usuario", validators=[DataRequired(), Length(min= 5)])
     password = PasswordField('Contraseña', validators=[DataRequired(), Length(min=5)])
     email = StringField("Email", validators=[DataRequired(), Email()])
+    imgp =StringField("Foto de perfil(link)", validators=[Optional(), URL()])
     submit = SubmitField("Crear usuario")
 
 class LoginForm(FlaskForm):

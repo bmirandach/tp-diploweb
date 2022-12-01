@@ -25,9 +25,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_path
 app.config['MAIL_SERVER'] = 'smtp-mail.outlook.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL']=False
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_NAME'] = ''
+app.config['MAIL_SURNAME'] = ''
 app.config['MAIL_USERNAME'] = ''
 app.config['MAIL_PASSWORD'] = ''
+app.config['MAIL_IMGP'] = ''
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -47,9 +50,12 @@ Favorites = db.Table(
 class User(UserMixin, db.Model):
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True, unique=True)
+    name = db.Column(db.String(64), unique=True)
+    surname = db.Column(db.String(64), unique=True)
     username = db.Column(db.String(64), unique=True)
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(128))
+    imgp = db.Column(db.Text, nullable=False)
     admin = db.Column(db.Boolean, default=False)
     likes = db.relationship('Post', secondary=Favorites, backref='user', lazy='dynamic')
 
@@ -137,8 +143,12 @@ def create_user():
     form = UserCreate()
     if request.method == 'POST':
         if form.validate_on_submit():
-            user = User(username=form.username.data,
-                           password=form.password.data, email=form.email.data)
+            user = User(name=form.name.data,
+                        surname=form.surname.data,
+                        username=form.username.data,
+                        password=form.password.data, 
+                        email=form.email.data,
+                        imgp=form.imgp.data)
             user.set_password(form.password.data)
             db.session.add(user)
             db.session.commit()
