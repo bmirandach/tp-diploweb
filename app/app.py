@@ -157,6 +157,8 @@ def create_user():
             flash('Error. Revise los datos del formulario.')
     return render_template('signin.html', form=form)
 
+# Nueva funcion (opcional) editar perfil
+
 @app.route('/editar/<user_id>', methods=['GET','POST'])
 def updateuser(user_id):
     form = UserUpdate()
@@ -173,6 +175,8 @@ def updateuser(user_id):
             return redirect(url_for('profile', user_id=user_id))
     #entra al formulario, GET
     return render_template('updateuser.html', form=form, user=user)
+# Finalizacion de la funcion de edicion de perfil
+
 
 @app.route('/iniciar-sesion', methods=['GET', 'POST'])
 def login():
