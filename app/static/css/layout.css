@@ -53,6 +53,17 @@ button:hover {
   background-color: #b7b7b7;
 }
 
+.eprofile {
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  padding: .5rem 0 .5rem 0;
+  width: 10%; /* para que dentro de <a> ocupe todo el ancho */
+}
+
+
+
 main {
   margin: 0 1rem 0 1rem;
   flex: 1;
@@ -72,13 +83,13 @@ main {
 }
 
 .footer {
-  background-color: #000;
-  color: #fff;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   padding: 1rem;
   text-align: left;
   display: flex;
-  flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
+  flex-direction:column;
   justify-content: center;
 }
 
@@ -707,7 +718,7 @@ h4.hero__title {
 }
 
 .profile:nth-child(2):before {
-  background-image: url(https://images.unsplash.com/photo-1580553561519-b0eda6a0d3f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80);
+  background-image: url(https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGxhbnQlMjB3YWxscGFwZXJ8ZW58MHx8MHx8&w=1000&q=80);
 }
 
 .profile__content {
@@ -755,3 +766,11 @@ h4.hero__title {
 .users li {
   padding-top: 1rem;
 }
+
+
+.img_profile {
+  width: 100%;
+}
+
+
+
