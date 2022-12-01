@@ -3,14 +3,34 @@
 
 {% block main %}
 {% if current_user.id == user.id %}
-<h2 class="title title--semibold">Bienvenido {{user.username}}</h2>
-<h4 class="subtitle">Tu mail es {{user.email}}</h4>
-<h3 class="subtitle title">Tus favoritos</h3>
+<h2 class="title title--semibold">Bienvenido  
+  <div class="img_profile">
+    <img src="{{user.imgp}}">  
+  </div>                                                                                                                                                                                              </h2>
+<h4 class="subtitle">Nombre: {{user.name}}</h4>
+<h4 class="subtitle">Apellido: {{user.surname}}</h4>
+<h4 class="subtitle">Usuario: {{user.username}}</h4>
+<h4 class="subtitle">Email: {{user.email}}</h4>
+
+<div class="eprofile">
+  <a href="{{url_for('updateuser', user_id=user.id)}}"><button>Editar Perfil</button></a>
+</div>
+
+
+<h3 class="subtitle title">Tus favoritos:</h3>
 {% else %}
 <h2 class="title title--semibold">Perfil de {{user.username}}</h2>
-<h4 class="subtitle">Su mail es {{user.email}}</h4>
-<h3 class="subtitle title">Sus favoritos</h3>
+<div class="img_profile">
+  <img src="{{user.imgp}}">  
+</div>
+<h4 class="subtitle">Nombre: {{user.name}}</h4>
+<h4 class="subtitle">Apellido: {{user.surname}}</h4>
+<h4 class="subtitle">Usuario: {{user.username}}</h4>
+<h4 class="subtitle">Email: {{user.email}}</h4> 
+
+<h3 class="subtitle title">Post favoritos</h3>
 {% endif %}
+
 <div class="container">
   {% for post in list_posts %}
   <div class="card">
@@ -25,4 +45,5 @@
   </div>
   {% endfor %}
 </div>
+
 {% endblock %}
