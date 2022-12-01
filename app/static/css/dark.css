@@ -1,11 +1,11 @@
 :root {
   --primary-dark: #ebebeb;
-  --primary-color: #b8f89e;
+  --primary-color: #8bc574;
   --primary-hover: #b7b7b7;
 }
 
 body.dark {
-  background: #121212;
+  background: linear-gradient(20deg, rgb(8, 8, 8), var(--primary));
   color: rgba(235, 235, 235, .87);
 }
 
@@ -89,4 +89,25 @@ body.dark {
 
 .fa-sun {
   color: #f0f07b;
+}
+
+.dark .footer {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  padding: 1rem;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 769px) {
+  .footer {
+    padding: 1rem 12.5rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .footer {
+    padding: 1rem 10rem;
+  }
 }
