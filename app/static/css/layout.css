@@ -766,9 +766,31 @@ h4.hero__title {
   /* para que dentro de <a> ocupe todo el ancho */
 }
 
-.img_profile {
-  width: 100%;
+
+.uprofile{
+  z-index: 1;
+  width: 600px;
+  height: 440px;
+  padding: 20px 20px;
+  font-size: 15px;
+  line-height: 1.5;
+  box-shadow: 1px 4px 10px;
+  border-radius: 7px;
+  
+}
+
+.uprofile img{
+  width: 320px;
+  height: 400px;
+  border-radius: 5px;
+  float: left;
+  margin-right: 15px;
 }
 
 
+.buttonprofile {
+  float: left;
+  padding: .5rem 0 .5rem 0;
+  width: 30%; /* para que dentro de <a> ocupe todo el ancho */
+}
 
