@@ -35,6 +35,11 @@ body.dark {
   color: #fff;
 }
 
+.dark .footer {
+  background-color: #000;
+  color: #fff;
+}
+
 .dark .form__buttons input{
   background-color: var(--primary-color);
 }
