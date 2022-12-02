@@ -12,11 +12,8 @@
 <h4 class="subtitle">Usuario: {{user.username}}</h4>
 <h4 class="subtitle">Email: {{user.email}}</h4>
 
-<!--
-<div class="eprofile">
-  <a href="{{url_for('updateuser', user_id=user.id)}}"><button>Editar Perfil</button></a>
-</div>
--->
+<p><a href="{{ url_for('update_user') }}">Editar perfil</a></p>
+
 
 <h3 class="subtitle title">Tus favoritos:</h3>
 {% else %}

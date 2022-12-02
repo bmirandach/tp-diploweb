@@ -1,14 +1,14 @@
 import os
-from flask import Flask #importo la clase
+from flask import Flask
 from flask import render_template, flash
-from flask import abort, request, redirect, url_for
+from flask import request, redirect, url_for
 from flask_bootstrap import Bootstrap
 from datetime import datetime #para el post
 from werkzeug.security import generate_password_hash, check_password_hash #para contraseñas
 from flask_login import LoginManager
 from flask_login import UserMixin #incluye implementaciones genericas
 from flask_login import current_user, login_user, logout_user, login_required
-from flask_mail import Mail, Message
+from flask_mail import Mail, Message #para el form de contacto
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -96,6 +96,7 @@ def load_user(id):
     return User.query.get(int(id))
 
 @app.route('/agregar', methods=['GET', 'POST'])
+@login_required
 def create():
     form = PostCreate()
     if request.method == 'POST':
@@ -111,6 +112,7 @@ def create():
     return render_template('create.html', form=form)
 
 @app.route('/modificar/<post_id>', methods=['GET','POST'])
+@login_required
 def update(post_id):
     form = PostUpdate()
     post = Post.query.get_or_404(post_id)
@@ -128,6 +130,7 @@ def update(post_id):
     return render_template('update.html', form=form, post=post)
 
 @app.route('/eliminar/<post_id>')
+@login_required
 def delete(post_id):
     post = Post.query.get_or_404(post_id)
     db.session.delete(post)
@@ -159,22 +162,25 @@ def create_user():
 
 # Nueva funcion (opcional) editar perfil
 
-@app.route('/editar/<user_id>', methods=['GET','POST'])
-def updateuser(user_id):
+@app.route('/editar', methods=['GET','POST'])
+@login_required
+def update_user():
+    #este se puede editar de una forma distinta a la de los posts
     form = UserUpdate()
-    user = User.query.get_or_404(user_id)
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            user = User(name=form.name.data,
-                        surname=form.surname.data,
-                        username=form.username.data,
-                        imgp=form.imgp.data)
-            db.session.add(user)
-            db.session.commit()
-            flash(f'El usuario se modificó con éxito')  # {user.id}
-            return redirect(url_for('profile', user_id=user_id))
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        current_user.imgp = form.imgp.data
+        db.session.commit()
+        # flash(f'Tus datos se modificaron con éxito') ya no, que lleve al usuario directamente a su perfil
+        return redirect(url_for('profile', user_id=current_user.id))
+    elif request.method == 'GET':
+        #los datos van a ser editados, carga los actuales
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+        form.imgp.data = current_user.imgp 
     #entra al formulario, GET
-    return render_template('updateuser.html', form=form, user=user)
+    return render_template('updateUser.html', form=form)
 # Finalizacion de la funcion de edicion de perfil
 
 
@@ -205,9 +211,8 @@ def logout():
 @app.route('/')
 def index():
     print(db_path)
-    all_contents = Post.query.all() #si uso first como traigo los otros 2?
+    all_contents = Post.query.order_by(Post.timestamp.desc()).limit(4).all()
     return render_template('index.html', list_posts=all_contents)
-
 
 @app.route('/contacto', methods=['GET', 'POST'])
 def contact():
@@ -233,7 +238,7 @@ def contact_us():
 
 @app.route('/posts')
 def contents():
-    all_contents = Post.query.all()
+    all_contents = Post.query.order_by(Post.timestamp.desc()).all()
     return render_template('contents.html', list_posts=all_contents)
 
 @app.route('/post/<post_id>')
@@ -244,7 +249,6 @@ def content(post_id):
     #     return abort(404)
     form = FavoriteForm()
     return render_template('content.html', post=the_post, form=form)
-
 
 @app.route('/favorito/<post_id>', methods=['POST'])
 @login_required
@@ -261,7 +265,6 @@ def like(post_id):
         return redirect(url_for('content', post_id=post_id))
     else:
         return redirect(url_for('index'))
-
 
 @app.route('/desfavorito/<post_id>', methods=['POST'])
 @login_required
@@ -293,11 +296,9 @@ def users():
     all_users = User.query.all()
     return render_template('users.html', list_users=all_users)
 
-
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html'), 404
-
 
 @app.errorhandler(500)
 def internal_error(error):

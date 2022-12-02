@@ -13,7 +13,7 @@
   <a class="text__link" href="{{ url_for('contents') }}">Ver más ></a>
 </div>
 <div class="container">
-  {% for post in list_posts[:4]: %}
+  <!-- {% for post in list_posts[:4]: %} -->
   <div class="card">
     <div class="card__image">
       <img src="{{post.image_link}}">
@@ -24,6 +24,6 @@
       <a title="Leer mas" class="card__link" href="{{url_for('content', post_id=post.id)}}">Leer más</a>
     </div>
   </div>
-  {% endfor %}
+  <!-- {% endfor %} -->
 </div>
 {% endblock %}

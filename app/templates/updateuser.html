@@ -1,6 +1,6 @@
 {% extends "./layout.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% block title %}editar{% endblock %}
+{% block title %}Editar{% endblock %}
 
 {% block main %}
 <div class="form_container">
@@ -8,23 +8,7 @@
   <form action="" method="post" novalidate class="form">
     {{ form.hidden_tag() }}
 
-    <!-- Nombre -->
-    <div class="form__data">
-      {{ form.name.label }}
-      {{ form.name(size=32) }}
-      {% for error in form.name.errors %}
-      <span class="message--error">{{ error }}</span>
-      {% endfor %}
-    </div>
-
-    <!-- Apellido -->
-    <div class="form__data">
-      {{ form.surname.label }}
-      {{ form.surname(size=32) }}
-      {% for error in form.surname.errors %}
-      <span class="message--error">{{ error }}</span>
-      {% endfor %}
-    </div>
+    <!-- borré los datos que me parecía que no deberían poder editarse no los dejé comentados porque le molestaba a jinja2 -->
 
     <!-- NombredeUsuario -->
     <div class="form__data">
@@ -35,25 +19,16 @@
       {% endfor %}
     </div>
 
-        <!-- Email -->
-        <div class="form__data">
-          {{ form.email.label }}
-          {{ form.email(size=64) }}
-          {% for error in form.email.errors %}
-          <span class="message--error">{{ error }}</span>
-          {% endfor %}
-        </div>
-    
-        <!-- Contraseña -->
-        <div class="form__data">
-          {{ form.password.label }}
-          {{ form.password(size=32) }}
-          {% for error in form.password.errors %}
-          <span class="message--error">{{ error }}</span>
-          {% endfor %}
-        </div>
-    
-    <!-- Foto de perfil (Por el momento solo link) -->
+    <!-- Email -->
+    <div class="form__data">
+      {{ form.email.label }}
+      {{ form.email(size=64) }}
+      {% for error in form.email.errors %}
+      <span class="message--error">{{ error }}</span>
+      {% endfor %}
+    </div>
+
+    <!-- Foto de perfil (Por el momento solo link, POR SIEMPRE!!) -->
     <div class="form__data">
       {{ form.imgp.label }}
       {{ form.imgp }}
@@ -66,8 +41,5 @@
       {{ form.submit()}}
     </div>
   </form>
-    <!-- {% block page_content %}
-    {{wtf.quick_form(form)}}
-    {% endblock %} -->
 </div>
 {% endblock %}
