@@ -3,28 +3,31 @@
 
 {% block main %}
 {% if current_user.id == user.id %}
-<h2 class="title title--semibold">Bienvenido  
-  <div class="img_profile">
-    <img src="{{user.imgp}}">  
-  </div>                                                                                                                                                                                              </h2>
-<h4 class="subtitle">Nombre: {{user.name}}</h4>
-<h4 class="subtitle">Apellido: {{user.surname}}</h4>
-<h4 class="subtitle">Usuario: {{user.username}}</h4>
-<h4 class="subtitle">Email: {{user.email}}</h4>
 
-<p><a href="{{ url_for('update_user') }}">Editar perfil</a></p>
+<h2 class="title title--semibold">Bienvenido, {{user.name}} {{user.surname}} </h2>
+<div class="uprofile">
+    <img src="{{user.imgp}}">   
+      <h4>Nombre: {{user.name}}</h4> 
+        <h4>Apellido: {{user.surname}}</h4>
+          <h4>Usuario: {{user.username}}</h4>
+            <h4>Email: {{user.email}}</h4>
 
+<div class="buttonprofile">
+  <a href="{{ url_for('update_user') }}"><button>Editar Perfil</button></a>
+</div> 
+
+</div>
 
 <h3 class="subtitle title">Tus favoritos:</h3>
 {% else %}
-<h2 class="title title--semibold">Perfil de {{user.username}}</h2>
-<div class="img_profile">
-  <img src="{{user.imgp}}">  
+<h2 class="title title--semibold">Perfil de {{user.name}} {{user.surname}}</h2>
+<div class="uprofile">
+  <img src="{{user.imgp}}">   
+    <h4>Nombre: {{user.name}}</h4> 
+      <h4>Apellido: {{user.surname}}</h4>
+        <h4>Usuario: {{user.username}}</h4>
+          <h4>Email: {{user.email}}</h4>
 </div>
-<h4 class="subtitle">Nombre: {{user.name}}</h4>
-<h4 class="subtitle">Apellido: {{user.surname}}</h4>
-<h4 class="subtitle">Usuario: {{user.username}}</h4>
-<h4 class="subtitle">Email: {{user.email}}</h4> 
 
 <h3 class="subtitle title">Post favoritos</h3>
 {% endif %}
