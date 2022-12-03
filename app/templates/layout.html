@@ -21,7 +21,7 @@
 <body>
   <header>
     <nav class="navbar">
-      <a href="{{url_for('index')}}"><img class="navbar__logo" href="{{url_for('index')}}" src="{{ url_for('static', filename='img/logo.png') }}" alt=""></a>
+      <a href="{{ url_for('index') }}"><img class="navbar__logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="logo de NewPlant"></a>
 <!--      <ul class="navbar__list">
         {% if current_user.is_anonymous %}
           <li><a class="navbar__link" href="{{ url_for('create_user') }}">Crear cuenta</a></li>
@@ -54,45 +54,42 @@
           {% else %}
           <li><a class="navbar__link" href="{{ url_for('contact') }}">Contacto</a></li>
           {% endif %}
-          <li onclick="toggleMenu()"><a class="navbar__link" href="#">Menu</a></li>
+          <li onclick="toggleMenu()" id="menu"><a class="navbar__link" href="#">Menu</a></li>
         </ul>
       </div>
       
-      <!-- Menu btn that toggles onClick and changes appearance ( .menu-toggle CSS ) -->
       <div class="navbar__toggle" id="navbar__toggle">
         <div class="hamburger"></div>
       </div>
-      
     </nav>
     {% block header %}
     {% endblock %}
   </header>
-  <div class="sub-menu-wrap" id="subMenu">
-    <div class="sub-menu">
-        <div class="user-info">
-        </div>
-        <hr>
-        {% if current_user.is_anonymous %}
-        <a href="{{ url_for('create_user') }}" class="sub-menu-link">
-            <p>Crear Cuenta</p>
-            <span>></span>
-        </a>
-        <a href="{{ url_for('login') }}" class="sub-menu-link">
-            <p>Ingresar</p>
-            <span>></span>
-        </a>
-        {% else %}
-        {% if current_user.admin %}
-      <a href="{{ url_for('users') }}" class="sub-menu-link">
+  <div class="submenu__wrap" id="subMenu">
+    <div class="submenu">
+      {% if current_user.is_anonymous %}
+      <a href="{{ url_for('create_user') }}" class="submenu__link">
+        <p>Crear Cuenta</p>
+        <span>></span>
+      </a>
+      <a href="{{ url_for('login') }}" class="submenu__link">
+        <p>Ingresar</p>
+        <span>></span>
+      </a>
+      {% else %}
+      <p>{{ current_user.username }}</p>
+      <hr>
+      {% if current_user.admin %}
+      <a href="{{ url_for('users') }}" class="submenu__link">
         <p>Usuarios</p>
         <span>></span>
       </a>
       {% endif %}
-      <a href="{{ url_for('logout') }}" class="sub-menu-link">
-          <p>Cerrar Sesion</p>
-          <span>></span>
-          </a>
-          {% endif %}
+      <a href="{{ url_for('logout') }}" class="submenu__link">
+        <p>Cerrar Sesion</p>
+        <span>></span>
+      </a>
+      {% endif %}
     </div>
   </div>
   <main>

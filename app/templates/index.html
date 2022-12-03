@@ -16,12 +16,12 @@
   <!-- {% for post in list_posts[:4]: %} -->
   <div class="card">
     <div class="card__image">
-      <img src="{{post.image_link}}">
+      <img src="{{ post.image_link }}">
     </div>
     <div class="card__body">
-      <h3 class="card__title"> {{post.title}} </h3>
+      <h3 class="card__title">{{post.title}}</h3>
       <p class="card__text">Publicado el {{post.timestamp}}</p>
-      <a title="Leer mas" class="card__link" href="{{url_for('content', post_id=post.id)}}">Leer más</a>
+      <a title="Leer mas" class="card__link" href="{{ url_for('content', post_id=post.id) }}">Leer más</a>
     </div>
   </div>
   <!-- {% endfor %} -->

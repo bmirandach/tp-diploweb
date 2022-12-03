@@ -2,11 +2,16 @@
   --primary-dark: #ebebeb;
   --primary-color: #b8f89e;
   --primary-hover: #b7b7b7;
+  --text: #121212;
 }
 
 body.dark {
   background: #121212;
   color: rgba(235, 235, 235, .87);
+}
+
+.dark a {
+  color: var(--primary-color);
 }
 
 .dark button {
@@ -28,6 +33,7 @@ body.dark {
 
 .dark .card__link {
   background-color: var(--primary-color);
+  color: var(--text);
 }
 
 .dark .card__link:hover {
@@ -52,6 +58,10 @@ body.dark {
 .dark .hamburger::before,
 .dark .hamburger::after {
   background: rgba(235, 235, 235, .87);
+}
+
+.dark .hero {
+  background-image: linear-gradient(10deg, #1c3f0880, #1c3f0880), url('../img/hero.jpg');
 }
 
 .dark .navbar {
@@ -84,6 +94,7 @@ body.dark {
   filter: brightness(90%);
 }
 
+.dark .submenu__link,
 .dark .text__link {
   color: var(--primary-dark);
 }

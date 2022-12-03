@@ -3,45 +3,41 @@
 
 {% block main %}
 {% if current_user.id == user.id %}
-
 <h2 class="title title--semibold">Bienvenido, {{user.name}} {{user.surname}} </h2>
-<div class="uprofile">
-    <img src="{{user.imgp}}">   
-      <h4>Nombre: {{user.name}}</h4> 
-        <h4>Apellido: {{user.surname}}</h4>
-          <h4>Usuario: {{user.username}}</h4>
-            <h4>Email: {{user.email}}</h4>
-
-<div class="buttonprofile">
-  <a href="{{ url_for('update_user') }}"><button>Editar Perfil</button></a>
-</div> 
-
-</div>
-
-<h3 class="subtitle title">Tus favoritos:</h3>
 {% else %}
 <h2 class="title title--semibold">Perfil de {{user.name}} {{user.surname}}</h2>
-<div class="uprofile">
-  <img src="{{user.imgp}}">   
-    <h4>Nombre: {{user.name}}</h4> 
-      <h4>Apellido: {{user.surname}}</h4>
-        <h4>Usuario: {{user.username}}</h4>
-          <h4>Email: {{user.email}}</h4>
+{% endif %}
+<div class="user">
+  <img src="{{ user.imgp }}">
+  <div>
+    <h4>Nombre: {{user.name}}</h4>
+    <h4>Apellido: {{user.surname}}</h4>
+    <h4>Usuario: {{user.username}}</h4>
+    <h4>Email: {{user.email}}</h4>
+    {% if current_user.id == user.id %}
+    <div class="user__button">
+      <a href="{{ url_for('update_user') }}"><button>Editar Perfil</button></a>
+    </div>
+    {% endif %}
+  </div>
 </div>
-
+{% if current_user.id == user.id %}
+<h3 class="subtitle title">Tus favoritos</h3>
+{% else %}
 <h3 class="subtitle title">Post favoritos</h3>
 {% endif %}
+
 
 <div class="container">
   {% for post in list_posts %}
   <div class="card">
     <div class="card__image">
-      <img src="{{post.image_link}}">
+      <img src="{{ post.image_link }}">
     </div>
     <div class="card__body">
       <h4 class="card__title"> {{post.title}} </h4>
       <p class="card__text">Publicado el {{post.timestamp}}</p>
-      <a title="Leer mas" class="card__link" href="{{url_for('content', post_id=post.id)}}">Leer más</a>
+      <a title="Leer mas" class="card__link" href="{{ url_for('content', post_id=post.id) }}">Leer más</a>
     </div>
   </div>
   {% endfor %}

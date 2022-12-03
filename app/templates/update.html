@@ -3,7 +3,7 @@
 {% block title %}Modificar{% endblock %}
 
 {% block main %}
-<div class="form_container">
+<div class="form__container">
   <h2 class="title title--normal">Modificar post</h2>
   <form action="" method="post" novalidate class="form">
     {{ form.hidden_tag() }}
@@ -39,9 +39,5 @@
       {{ form.submit()}}
     </div>
   </form>
-    <!-- {% block page_content %}
-    <p>Los campos requeridos se marcan con *</p>
-    {{wtf.quick_form(form)}}
-    {% endblock %} -->
 </div>
 {% endblock %}

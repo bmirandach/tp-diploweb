@@ -1,14 +1,24 @@
 /*--------------------------------------*/
 /* muestra/oculta submenu del nav       */
 /*--------------------------------------*/
-let subMenu = document.getElementById("subMenu");
+let subMenu = document.getElementById('subMenu');
 
-function toggleMenu()
-{
-    subMenu.classList.toggle("open-menu");
+function toggleMenu() {
+  //ubica al submenu a continuacion de Menu (la ubicacion cambia segun el alto de la pantalla)
+  let menu = document.getElementById('menu')
+  let position = menu.getBoundingClientRect().y
+  let final_position = position + menu.offsetHeight
+  //si la ubicacion del submenu se va de pantalla hace que termine a la misma altura que Menu
+  if ((final_position + 182) > window.innerHeight) {
+    subMenu.style.top = (final_position - 182) + 'px'
+  } else {
+    subMenu.style.top = final_position + 'px'
+  }
+  //agrega o saca la clase que muestra el submenu
+  subMenu.classList.toggle("open-menu");
 }
 
-document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener('DOMContentLoaded', function (event) {
   //código a ejecutar cuando el DOM está listo para recibir acciones
 
   /*--------------------------------------*/
