@@ -158,7 +158,7 @@ def create_user():
             return redirect(url_for('login'))
         else:
             flash('Error. Revise los datos del formulario.')
-    return render_template('signin.html', form=form)
+    return render_template('signup.html', form=form)
 
 # Nueva funcion (opcional) editar perfil
 
@@ -199,7 +199,7 @@ def login():
             return redirect(url_for('login'))
         #si password y user son correctos la funcion registra al usuario como logueado
         login_user(user)
-        flash(f'Iniciaste sesión con el usuario {form.username.data}')
+        # flash(f'Iniciaste sesión con el usuario {form.username.data}') que no tire el mensaje, que lleve directo a index
         return redirect(url_for('index'))
     return render_template('login.html', form=form)
 
