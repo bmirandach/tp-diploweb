@@ -322,18 +322,18 @@ main {
 @media only screen and (min-width: 769px) {
   .hero {
     height: 55vh;
-    overflow: hidden;
     padding: 1.5rem 12.5rem 0 12.5rem;
   }
 }
 
 @media only screen and (min-width: 992px) {
   .hero {
+    overflow: hidden;
     padding: 1.5rem 10rem 0 10rem;
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1300px) {
   .hero {
     padding: 1.5rem 35rem 0 12.5rem;
   }
